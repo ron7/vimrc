@@ -263,8 +263,8 @@ vmap <F3> :s/^/\# /<CR>:noh<CR>
 vmap <F4> :s/^\# //<CR>:noh<CR>
 " remove the line numbers whenever you want
 map <F11> :call NumOff()<CR>
-
-
+" remove all trailing whitespaces with F5
+nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 
 
