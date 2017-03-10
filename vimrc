@@ -265,6 +265,14 @@ vmap <F4> :s/^\# //<CR>:noh<CR>
 map <F11> :call NumOff()<CR>
 " remove all trailing whitespaces with F5
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+" actually with the below every time :w is pressed, it will clear the ending white spaces: (DANGEROUS)
+" autocmd BufWritePre * %s/\s\+$//e
+autocmd FileType php,yaml,erb autocmd BufWritePre <buffer> %s/\s\+$//e
+" formatting indentation with F7
+map <F7> mzgg=G`z
+" autoindent:
+autocmd FileType php autocmd BufWritePre * :normal mzgg=G`z
+
 
 
 
