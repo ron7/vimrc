@@ -59,8 +59,9 @@ set expandtab
 " set colorcolumn=+1
 
 " Numbers
-set number
+"set number
 set numberwidth=5
+set paste
 
 " Open new split panes to right and bottom, which feels more natural
 " set splitbelow
@@ -85,7 +86,7 @@ set sidescrolloff=15
 set sidescroll=1
 
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
-set rnu
+"set rnu
 function! ToggleNumbersOn()
     set nu!
     set rnu
@@ -106,13 +107,13 @@ endfunction
 
 
 
-autocmd FocusLost * call ToggleRelativeOn()
-autocmd FocusGained * call ToggleRelativeOn()
-" autocmd InsertEnter * call ToggleRelativeOn()
-" autocmd InsertLeave * call ToggleRelativeOn()
+"autocmd FocusLost * call ToggleRelativeOn()
+"autocmd FocusGained * call ToggleRelativeOn()
+"" autocmd InsertEnter * call ToggleRelativeOn()
+"" autocmd InsertLeave * call ToggleRelativeOn()
 
-autocmd InsertEnter * call NumOff()
-autocmd InsertLeave * call NumOn()
+"autocmd InsertEnter * call NumOff()
+"autocmd InsertLeave * call NumOn()
 
 "Use enter to create new lines w/o entering insert mode
 "nnoremap <CR> o<Esc>
@@ -262,16 +263,10 @@ map <F4> :s/^\/\*\ //<CR>:s/\ \*\/$//<CR>:noh<CR>
 vmap <F3> :s/^/\# /<CR>:noh<CR>
 vmap <F4> :s/^\# //<CR>:noh<CR>
 " remove the line numbers whenever you want
-map <F11> :call NumOff()<CR>
-" remove all trailing whitespaces with F5
-nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-" actually with the below every time :w is pressed, it will clear the ending white spaces: (DANGEROUS)
-" autocmd BufWritePre * %s/\s\+$//e
-autocmd FileType php,yaml,erb autocmd BufWritePre <buffer> %s/\s\+$//e
+" map <F11> :call NumOff()<CR>
 " formatting indentation with F7
 map <F7> mzgg=G`z
-" autoindent:
-autocmd FileType php autocmd BufWritePre * :normal mzgg=G`z
+
 
 
 
